@@ -1,3 +1,3 @@
 import Tabs from '../src/renderless/Tabs.vue';
 
-export { Tabs };
+export default Tabs;

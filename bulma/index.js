@@ -5,5 +5,5 @@ import Tabs from '../src/bulma/Tabs.vue';
 import EnsoTabs from '../src/bulma/EnsoTabs.vue';
 
 export {
-    Alive, Static, Tab, EnsoTabs, Tabs,
+    Tab, Alive, Static, Tabs, EnsoTabs,
 };
