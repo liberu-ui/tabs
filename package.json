@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/laravel-enso/tabs.git"
+    "url": "git+https://github.com/enso-ui/tabs.git"
   },
   "keywords": [
     "vue",
@@ -19,9 +19,9 @@
   "author": "Adrian Ocneanu <aocneanu@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/laravel-enso/tabs/issues"
+    "url": "https://github.com/enso-ui/tabs/issues"
   },
-  "homepage": "https://github.com/laravel-enso/tabs#readme",
+  "homepage": "https://github.com/enso-ui/tabs#readme",
   "devDependencies": {
     "@vue/eslint-config-airbnb": "^4.0.0",
     "babel-eslint": "^10.0.1",
