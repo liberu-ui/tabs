@@ -1,7 +1,8 @@
 <template>
     <renderless-tabs>
         <div slot-scope="{ tabs, select }">
-            <div :class="['tabs is-enso is-toggle is-fullwidth', 'is-' + size]">
+            <div class="tabs is-enso is-toggle is-fullwidth no-scrollbars"
+                :class="`is-${size}`">
                 <ul class="tab-list has-background-grey-light">
                     <li :class="{ 'is-active': tab.active }"
                         v-for="tab in tabs"
