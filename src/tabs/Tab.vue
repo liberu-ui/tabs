@@ -27,7 +27,7 @@ export default {
 
     computed: {
         tabs() {
-            return this.tabsState.tabs;
+            return this.tabsState;
         },
         tab() {
             return this.keepAlive

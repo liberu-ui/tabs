@@ -7,7 +7,10 @@ export default {
     provide() {
         return {
             tabsState: {
-                tabs: this,
+                tabs: this.tabs,
+                register: this.register,
+                activate: this.activate,
+                remove: this.remove,
             },
         };
     },
@@ -15,6 +18,7 @@ export default {
     methods: {
         register(tab) {
             this.tabs.push(tab);
+            this.$emit('registered', tab.id);
 
             if (this.tabs.length === 1) {
                 this.activate(tab);
@@ -22,10 +26,11 @@ export default {
         },
         remove(tab) {
             this.tabs.splice(this.tabIndex(tab), 1);
+            this.$emit('removed', tab.id);
             tab.$destroy();
         },
         select(tab) {
-            this.$emit('selected', tab);
+            this.$emit('selected', tab.id);
             this.activate(tab);
         },
         activate(activeTab) {
@@ -33,7 +38,7 @@ export default {
                 tab.active = activeTab._uid === tab._uid;
             });
 
-            this.$emit('activated', activeTab);
+            this.$emit('activated', activeTab.id);
         },
         tabIndex(tab) {
             return this.tabs

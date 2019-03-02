@@ -1,5 +1,5 @@
 <template>
-    <core-tabs>
+    <core-tabs v-on="$listeners">
         <template v-slot:default="{ tabs, select }">
             <div class="enso-tabs">
                 <div class="tabs is-toggle is-fullwidth no-scrollbars"
