@@ -1,14 +1,15 @@
 <script>
-
 export default {
     data: () => ({
         tabs: [],
     }),
 
-    created() {
-        this.$on('register', this.register);
-        this.$on('activate', this.activate);
-        this.$on('remove', this.remove);
+    provide() {
+        return {
+            tabsState: {
+                tabs: this,
+            },
+        };
     },
 
     methods: {
@@ -50,5 +51,4 @@ export default {
         });
     },
 };
-
 </script>

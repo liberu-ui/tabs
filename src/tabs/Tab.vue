@@ -1,9 +1,10 @@
 <script>
-
 import Alive from './Alive.vue';
 import Static from './Static.vue';
 
 export default {
+    inject: ['tabsState'],
+
     props: {
         id: {
             type: [String, Object],
@@ -25,6 +26,9 @@ export default {
     }),
 
     computed: {
+        tabs() {
+            return this.tabsState.tabs;
+        },
         tab() {
             return this.keepAlive
                 ? Alive
@@ -42,10 +46,10 @@ export default {
 
     methods: {
         register() {
-            this.$parent.$emit('register', this);
+            this.tabs.register(this);
         },
         activate() {
-            this.$parent.$emit('activate', this);
+            this.tabs.activate(this);
         },
         enable() {
             this.disabled = false;
@@ -56,8 +60,7 @@ export default {
             }
         },
         remove() {
-            this.$parent.$emit('remove', this);
-            this.$destroy();
+            this.tabs.remove(this);
         },
     },
 
@@ -70,5 +73,4 @@ export default {
         }, this.$slots.default);
     },
 };
-
 </script>

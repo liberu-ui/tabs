@@ -6,8 +6,9 @@
 </template>
 
 <script>
-
 export default {
+    name: 'AliveTab',
+
     props: {
         active: {
             type: Boolean,
@@ -15,5 +16,4 @@ export default {
         },
     },
 };
-
 </script>
