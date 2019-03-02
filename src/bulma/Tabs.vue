@@ -1,36 +1,39 @@
 <template>
-    <renderless-tabs>
-        <div slot-scope="{ tabs, select }">
-            <div :class="[
-                    'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
-                    { 'is-toggle': toggle }, { 'is-toggle-rounded': toggleRounded },
-                    { 'is-fullwidth': fullwidth }
-                ]">
-                <ul class="tab-list">
-                    <li :class="{ 'is-active': tab.active }"
-                        v-for="tab in tabs"
-                        :key="tab.id">
-                        <a @click="select(tab)"
-                            :disabled="tab.disabled">
-                            <slot name="label"
-                                :tab="tab.id">
-                                {{ tab.id }}
-                            </slot>
-                        </a>
-                    </li>
-                </ul>
+    <core-tabs>
+        <template v-slot:default="{ tabs, select }">
+            <div class="wrapper">
+                <div :class="[
+                        'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
+                        { 'is-toggle': toggle }, { 'is-toggle-rounded': toggleRounded },
+                        { 'is-fullwidth': fullwidth }
+                    ]">
+                    <ul class="tab-list">
+                        <li :class="{ 'is-active': tab.active }"
+                            v-for="tab in tabs"
+                            :key="tab.id">
+                            <a @click="select(tab)"
+                                :disabled="tab.disabled">
+                                <slot name="label"
+                                    :tab="tab.id">
+                                    {{ tab.id }}
+                                </slot>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <slot/>
-        </div>
-    </renderless-tabs>
+        </template>
+    </core-tabs>
 </template>
 
 <script>
-import RenderlessTabs from '../renderless/Tabs.vue';
+import CoreTabs from '../renderless/Tabs.vue';
 
 export default {
+    name: 'Tabs',
 
-    components: { RenderlessTabs },
+    components: { CoreTabs },
 
     props: {
         alignment: {

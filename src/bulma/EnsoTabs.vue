@@ -1,34 +1,37 @@
 <template>
-    <renderless-tabs>
-        <div slot-scope="{ tabs, select }">
-            <div class="tabs is-enso is-toggle is-fullwidth no-scrollbars"
-                :class="`is-${size}`">
-                <ul class="tab-list has-background-grey-light">
-                    <li :class="{ 'is-active': tab.active }"
-                        v-for="tab in tabs"
-                        :key="tab.id">
-                        <a :class="{ 'has-background-white has-text-grey-dark': tab.active }"
-                            @click="select(tab)"
-                            :disabled="tab.disabled">
-                            <slot name="label"
-                                :tab="tab.id">
-                                {{ tab.id }}
-                            </slot>
-                        </a>
-                    </li>
-                </ul>
+    <core-tabs>
+        <template v-slot:default="{ tabs, select }">
+            <div class="enso-tabs">
+                <div class="tabs is-toggle is-fullwidth no-scrollbars"
+                    :class="`is-${size}`">
+                    <ul class="tab-list has-background-grey-light">
+                        <li :class="{ 'is-active': tab.active }"
+                            v-for="tab in tabs"
+                            :key="tab.id">
+                            <a :class="{ 'has-background-white has-text-grey-dark': tab.active }"
+                                @click="select(tab)"
+                                :disabled="tab.disabled">
+                                <slot name="label"
+                                    :tab="tab.id">
+                                    {{ tab.id }}
+                                </slot>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <slot/>
             </div>
-            <slot/>
-        </div>
-    </renderless-tabs>
+        </template>
+    </core-tabs>
 </template>
 
 <script>
-import RenderlessTabs from '../renderless/Tabs.vue';
+import CoreTabs from '../renderless/Tabs.vue';
 
 export default {
+    name: 'Tabs',
 
-    components: { RenderlessTabs },
+    components: { CoreTabs },
 
     props: {
         size: {
@@ -42,27 +45,31 @@ export default {
 </script>
 
 <style lang="scss">
-    .tabs.is-enso.is-fullwidth.is-toggle > .tab-list {
-        border-radius: 6px;
+    .enso-tabs  {
+        position: relative;
 
-        li {
-            padding: 0.4em;
-        }
-
-        .is-active > a {
-            opacity: 1;
-            font-weight: 600;
-        }
-
-        a {
-            transition: background 0.3s;
-            border: unset;
+        .tabs.is-fullwidth.is-toggle > .tab-list {
             border-radius: 6px;
-            opacity: 0.7;
 
-            &[disabled] {
-                opacity: .4;
-                cursor: not-allowed;
+            li {
+                padding: 0.4em;
+            }
+
+            .is-active > a {
+                opacity: 1;
+                font-weight: 600;
+            }
+
+            a {
+                transition: background 0.3s;
+                border: unset;
+                border-radius: 6px;
+                opacity: 0.7;
+
+                &[disabled] {
+                    opacity: .4;
+                    cursor: not-allowed;
+                }
             }
         }
     }
