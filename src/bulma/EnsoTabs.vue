@@ -29,7 +29,7 @@
 import CoreTabs from '../renderless/Tabs.vue';
 
 export default {
-    name: 'Tabs',
+    name: 'EnsoTabs',
 
     components: { CoreTabs },
 
