@@ -3,6 +3,8 @@ import Alive from './Alive.vue';
 import Static from './Static.vue';
 
 export default {
+    name: 'Tab',
+
     inject: ['tabsState'],
 
     props: {
