@@ -51,11 +51,8 @@ export default {
     render() {
         return this.$scopedSlots.default({
             tabs: this.tabs,
-            tabBindings: tab => ({
-                disabled: () => tab.disabled,
-            }),
             tabEvents: tab => ({
-                click: () => this.select(tab),
+                click: () => (!tab.disabled ? this.select(tab) : null),
             }),
         });
     },
