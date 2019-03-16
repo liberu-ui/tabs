@@ -1,5 +1,5 @@
 <template>
-    <core-tabs>
+    <core-tabs v-on="$listeners">
         <template v-slot:default="{ tabs, tabEvents }">
             <div class="wrapper">
                 <div :class="[

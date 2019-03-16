@@ -40,7 +40,7 @@ export default {
                 tab.active = activeTab._uid === tab._uid;
             });
 
-            this.$emit('activated', activeTab.id);
+            this.$nextTick(() => this.$emit('activated', activeTab.id));
         },
         tabIndex(tab) {
             return this.tabs
