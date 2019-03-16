@@ -1,6 +1,6 @@
 <template>
     <core-tabs>
-        <template v-slot:default="{ tabs, select }">
+        <template v-slot:default="{ tabs, tabBindings, tabEvents }">
             <div class="wrapper">
                 <div :class="[
                         'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
@@ -11,8 +11,8 @@
                         <li :class="{ 'is-active': tab.active }"
                             v-for="tab in tabs"
                             :key="tab.id">
-                            <a @click="select(tab)"
-                                :disabled="tab.disabled">
+                            <a v-bind="tabBindings(tab)"
+                                v-on="tabEvents(tab)">
                                 <slot name="label"
                                     :tab="tab.id">
                                     {{ tab.id }}

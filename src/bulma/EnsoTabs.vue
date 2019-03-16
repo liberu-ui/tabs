@@ -1,6 +1,6 @@
 <template>
     <core-tabs v-on="$listeners">
-        <template v-slot:default="{ tabs, select }">
+        <template v-slot:default="{ tabs, tabBindings, tabEvents }">
             <div class="enso-tabs">
                 <div class="tabs is-toggle is-fullwidth no-scrollbars"
                     :class="`is-${size}`">
@@ -9,8 +9,8 @@
                             v-for="tab in tabs"
                             :key="tab.id">
                             <a :class="{ 'has-background-white has-text-grey-dark': tab.active }"
-                                @click="select(tab)"
-                                :disabled="tab.disabled">
+                                v-bind="tabBindings(tab)"
+                                v-on="tabEvents(tab)">
                                 <slot name="label"
                                     :tab="tab.id">
                                     {{ tab.id }}
