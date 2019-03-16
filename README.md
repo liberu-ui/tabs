@@ -39,7 +39,7 @@ import { Tabs, Tab } from '@enso-ui/tabs/bulma';
 - `EnsoTabs`
 
 `@enso-ui/tabs/renderless`:
-- `Tabs`
+- `CoreTabs`
 
 ## Contributions
 
