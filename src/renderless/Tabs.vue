@@ -50,9 +50,6 @@ export default {
         return this.$scopedSlots.default({
             tabs: this.tabs,
             register: this.register,
-            remove: this.remove,
-            select: this.select,
-            activate: this.activate,
         });
     },
 };
