@@ -27,9 +27,9 @@ export default {
             }
         },
         remove(tab) {
-            this.tabs.splice(this.tabIndex(tab), 1);
+            const index = this.tabIndex(tab);
+            this.tabs.splice(index, 1);
             this.$emit('removed', tab.id);
-            tab.$destroy();
         },
         select(tab) {
             this.$emit('selected', tab.id);

@@ -46,6 +46,10 @@ export default {
         }
     },
 
+    beforeDestroy() {
+        this.remove();
+    },
+
     methods: {
         register() {
             this.tabs.register(this);
