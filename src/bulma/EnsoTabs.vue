@@ -1,5 +1,6 @@
 <template>
-    <core-tabs v-on="$listeners">
+    <core-tabs v-on="$listeners"
+        ref="tabs">
         <template v-slot:default="{ tabs, tabEvents }">
             <div class="enso-tabs">
                 <div class="tabs is-toggle is-fullwidth no-scrollbars"
@@ -39,6 +40,12 @@ export default {
             default: 'normal',
             validator: value => ['normal', 'small', 'medium', 'large']
                 .includes(value),
+        },
+    },
+
+    computed: {
+        tabs() {
+            return this.$refs.tabs.tabs;
         },
     },
 };
