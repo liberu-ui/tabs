@@ -1,14 +1,14 @@
 <template>
     <core-tabs v-on="$listeners"
         ref="tabs">
-        <template v-slot:default="{ tabs, tabEvents }">
+        <template v-slot:default="{ key, tabs, tabEvents }">
             <div class="enso-tabs">
                 <div class="tabs is-toggle is-fullwidth no-scrollbars"
                     :class="`is-${size}`">
                     <ul class="tab-list has-background-grey-light">
                         <li :class="{ 'is-active': tab.active }"
                             v-for="tab in tabs"
-                            :key="tab.id">
+                            :key="key(tab.id)">
                             <a :class="{ 'has-background-white has-text-grey-dark': tab.active }"
                                 :disabled="tab.disabled"
                                 v-on="tabEvents(tab)">
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import CoreTabs from '../renderless/Tabs.vue';
+import CoreTabs from '../renderless/CoreTabs.vue';
 
 export default {
     name: 'EnsoTabs',

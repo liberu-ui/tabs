@@ -18,6 +18,18 @@ export default {
     },
 
     methods: {
+        activate(activeTab) {
+            this.tabs.forEach((tab) => {
+                tab.active = activeTab._uid === tab._uid;
+            });
+
+            this.$nextTick(() => this.$emit('activated', activeTab.id));
+        },
+        key(id) {
+            return typeof id === 'object'
+                ? JSON.stringify(id)
+                : id;
+        },
         register(tab) {
             this.tabs.push(tab);
             this.$emit('registered', tab.id);
@@ -35,13 +47,6 @@ export default {
             this.$emit('selected', tab.id);
             this.activate(tab);
         },
-        activate(activeTab) {
-            this.tabs.forEach((tab) => {
-                tab.active = activeTab._uid === tab._uid;
-            });
-
-            this.$nextTick(() => this.$emit('activated', activeTab.id));
-        },
         tabIndex(tab) {
             return this.tabs
                 .findIndex(({ _uid }) => _uid === tab._uid);
@@ -50,6 +55,7 @@ export default {
 
     render() {
         return this.$scopedSlots.default({
+            key: this.key,
             tabs: this.tabs,
             tabEvents: tab => ({
                 click: () => (!tab.disabled ? this.select(tab) : null),

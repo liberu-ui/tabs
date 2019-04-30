@@ -1,3 +1,3 @@
-import Tabs from '../src/renderless/Tabs.vue';
+import CoreTabs from '../src/renderless/CoreTabs.vue';
 
-export default Tabs;
+export default CoreTabs;

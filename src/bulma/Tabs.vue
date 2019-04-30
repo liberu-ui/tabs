@@ -1,6 +1,6 @@
 <template>
     <core-tabs v-on="$listeners">
-        <template v-slot:default="{ tabs, tabEvents }">
+        <template v-slot:default="{ key, tabs, tabEvents }">
             <div class="wrapper">
                 <div :class="[
                         'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
@@ -10,7 +10,7 @@
                     <ul class="tab-list">
                         <li :class="{ 'is-active': tab.active }"
                             v-for="tab in tabs"
-                            :key="tab.id">
+                            :key="key(tab.id)">
                             <a :disabled="tab.disabled"
                                 v-on="tabEvents(tab)">
                                 <slot name="label"
@@ -21,14 +21,14 @@
                         </li>
                     </ul>
                 </div>
+                <slot/>
             </div>
-            <slot/>
         </template>
     </core-tabs>
 </template>
 
 <script>
-import CoreTabs from '../renderless/Tabs.vue';
+import CoreTabs from '../renderless/CoreTabs.vue';
 
 export default {
     name: 'Tabs',
