@@ -1,11 +1,8 @@
 <script>
-import Alive from './Alive.vue';
-import Static from './Static.vue';
-
 export default {
     name: 'Tab',
 
-    inject: ['tabsState'],
+    inject: { tabs: { from: 'tabState' } },
 
     props: {
         id: {
@@ -26,17 +23,6 @@ export default {
         active: false,
         disabled: false,
     }),
-
-    computed: {
-        tabs() {
-            return this.tabsState;
-        },
-        tab() {
-            return this.keepAlive
-                ? Alive
-                : Static;
-        },
-    },
 
     created() {
         this.register();
@@ -71,12 +57,18 @@ export default {
     },
 
     render(renderEl) {
-        return renderEl(this.tab, {
-            props: {
-                active: this.active,
-                key: this.id,
+        if (!this.keepAlive && !this.active) {
+            return null;
+        }
+
+        return renderEl('div', {
+            attrs: {
+                class: 'animated fadeIn',
             },
-        }, this.$slots.default);
+            directives: this.keepAlive
+                ? [{ name: 'show', value: this.active }]
+                : [],
+        }, [this.$slots.default]);
     },
 };
 </script>

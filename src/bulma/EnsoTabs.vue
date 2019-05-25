@@ -59,7 +59,7 @@ export default {
             border-radius: 6px;
 
             li {
-                padding: 0.4em;
+                padding: 0.3em;
             }
 
             .is-active > a {

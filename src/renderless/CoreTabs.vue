@@ -8,7 +8,7 @@ export default {
 
     provide() {
         return {
-            tabsState: {
+            tabState: {
                 tabs: this.tabs,
                 register: this.register,
                 activate: this.activate,
@@ -48,8 +48,7 @@ export default {
             this.activate(tab);
         },
         tabIndex(tab) {
-            return this.tabs
-                .findIndex(({ _uid }) => _uid === tab._uid);
+            return this.tabs.findIndex(({ _uid }) => _uid === tab._uid);
         },
     },
 
