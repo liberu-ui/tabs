@@ -16,30 +16,9 @@ Unless where specified otherwise, the components can be used outside of the Enso
 
 For live examples and demos, you may visit [laravel-enso.com](https://www.laravel-enso.com)
 
-Check the full documentation at  [docs.laravel-enso.com](https://docs.laravel-enso.com).
+### Installation, Configuration & Usage
 
-### Installation
-
-Install the package:
-```
-npm i @enso-ui/tabs
-```
-Import the desired component(s):
-```js
-import { Tabs, Tab } from '@enso-ui/tabs/bulma';
-```
-
-### Exports
-
-`@enso-ui/tabs/bulma`:
-- `Tab`
-- `Alive`
-- `Static`
-- `Tabs`
-- `EnsoTabs`
-
-`@enso-ui/tabs/renderless`:
-- `CoreTabs`
+Be sure to check out the full documentation for this package available at [docs.laravel-enso.com](https://docs.laravel-enso.com/frontend/tabs.html)
 
 ## Contributions
 
