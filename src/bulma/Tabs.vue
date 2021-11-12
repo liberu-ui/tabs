@@ -1,6 +1,6 @@
 <template>
     <core-tabs v-on="$listeners">
-        <template v-slot:default="{ key, tabs, tabEvents }">
+        <template #:default="{ key, tabs, tabEvents }">
             <div class="wrapper">
                 <div :class="[
                         'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
@@ -39,7 +39,7 @@ export default {
         alignment: {
             type: String,
             default: 'left',
-            validator: value => ['left', 'centered', 'right']
+            validator: (value) => ['left', 'centered', 'right']
                 .includes(value),
         },
         boxed: {
@@ -53,7 +53,7 @@ export default {
         size: {
             type: String,
             default: 'normal',
-            validator: value => ['normal', 'small', 'medium', 'large']
+            validator: (value) => ['normal', 'small', 'medium', 'large']
                 .includes(value),
         },
         toggle: {
