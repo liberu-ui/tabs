@@ -1,6 +1,6 @@
 {
   "name": "@enso-ui/tabs",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Simply Tabs",
   "main": "index.js",
   "scripts": {
