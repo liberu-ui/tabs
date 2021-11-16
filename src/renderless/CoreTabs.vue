@@ -53,7 +53,7 @@ export default {
     },
 
     render() {
-        return this.$scopedSlots.default({
+        return this.$slots.default({
             key: this.key,
             tabs: this.tabs,
             tabEvents: tab => ({

@@ -1,7 +1,6 @@
 <template>
-    <core-tabs v-on="$listeners"
-        ref="tabs">
-        <template #:default="{ key, tabs, tabEvents }">
+    <core-tabs ref="tabs">
+        <template #default="{ key, tabs, tabEvents }">
             <div class="enso-tabs">
                 <div class="tabs is-toggle is-fullwidth no-scrollbars"
                     :class="`is-${size}`">

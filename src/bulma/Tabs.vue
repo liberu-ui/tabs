@@ -1,6 +1,6 @@
 <template>
-    <core-tabs v-on="$listeners">
-        <template #:default="{ key, tabs, tabEvents }">
+    <core-tabs>
+        <template #default="{ key, tabs, tabEvents }">
             <div class="wrapper">
                 <div :class="[
                         'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
