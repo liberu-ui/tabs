@@ -1,4 +1,6 @@
 <script>
+import 'animate.css';
+
 export default {
     name: 'Tab',
 
@@ -63,7 +65,7 @@ export default {
 
         return renderEl('div', {
             attrs: {
-                class: 'animated fadeIn',
+                class: 'animate__animated animate__fadeIn',
             },
             directives: this.keepAlive
                 ? [{ name: 'show', value: this.active }]
