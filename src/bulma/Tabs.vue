@@ -1,13 +1,13 @@
 <template>
-    <core-tabs>
-        <template #default="{ key, tabs, tabEvents }">
-            <div class="wrapper">
-                <div :class="[
-                        'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
-                        { 'is-toggle': toggle }, { 'is-toggle-rounded': toggleRounded },
-                        { 'is-fullwidth': fullwidth }
-                    ]">
-                    <ul class="tab-list">
+    <div class="wrapper">
+        <div :class="[
+                'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
+                { 'is-toggle': toggle }, { 'is-toggle-rounded': toggleRounded },
+                { 'is-fullwidth': fullwidth }
+            ]">
+            <ul class="tab-list">
+                <core-tabs>
+                    <template #default="{ key, tabs, tabEvents }">
                         <li :class="{ 'is-active': tab.active }"
                             v-for="tab in tabs"
                             :key="key(tab.id)">
@@ -19,12 +19,12 @@
                                 </slot>
                             </a>
                         </li>
-                    </ul>
-                </div>
-                <slot/>
-            </div>
-        </template>
-    </core-tabs>
+                    </template>
+                </core-tabs>
+            </ul>
+        </div>
+        <slot/>
+    </div>
 </template>
 
 <script>
