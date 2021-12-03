@@ -11,7 +11,7 @@
                         <li :class="{ 'is-active': tab.active }"
                             v-for="tab in tabs"
                             :key="key(tab.id)">
-                            <a :disabled="tab.disabled"
+                            <a :disabled="tab.disabled || null"
                                 v-on="tabEvents(tab)">
                                 <slot name="label"
                                     :tab="tab.id">

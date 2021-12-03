@@ -1,4 +1,5 @@
 <script>
+import { h } from 'vue';
 import 'animate.css';
 
 export default {
@@ -58,19 +59,19 @@ export default {
         },
     },
 
-    render(renderEl) {
+    render() {
         if (!this.keepAlive && !this.active) {
             return null;
         }
 
-        return renderEl('div', {
+        return h('div', {
             attrs: {
                 class: 'animate__animated animate__fadeIn',
             },
             directives: this.keepAlive
                 ? [{ name: 'show', value: this.active }]
                 : [],
-        }, [this.$slots.default]);
+        }, [this.$slots.default()]);
     },
 };
 </script>

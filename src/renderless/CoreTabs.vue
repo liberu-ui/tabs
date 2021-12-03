@@ -2,6 +2,10 @@
 export default {
     name: 'CoreTabs',
 
+    inheritAttrs: false,
+
+    emits: ['activated', 'registered', 'removed', 'selected'],
+
     data: () => ({
         tabs: [],
     }),

@@ -1,7 +1,7 @@
 <template>
-    <core-tabs ref="tabs">
-        <template #default="{ key, tabs, tabEvents }">
-            <div class="enso-tabs">
+    <div class="enso-tabs">
+        <core-tabs ref="tabs">
+            <template #default="{ key, tabs, tabEvents }">
                 <div class="tabs is-toggle is-fullwidth no-scrollbars"
                     :class="`is-${size}`">
                     <ul class="tab-list has-background-grey-light">
@@ -9,7 +9,7 @@
                             v-for="tab in tabs"
                             :key="key(tab.id)">
                             <a :class="{ 'has-background-white has-text-grey-dark': tab.active }"
-                                :disabled="tab.disabled"
+                                :disabled="tab.disabled || null"
                                 v-on="tabEvents(tab)">
                                 <slot name="label"
                                     :tab="tab.id">
@@ -20,9 +20,9 @@
                     </ul>
                 </div>
                 <slot/>
-            </div>
-        </template>
-    </core-tabs>
+            </template>
+        </core-tabs>
+    </div>
 </template>
 
 <script>
