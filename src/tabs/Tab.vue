@@ -1,5 +1,5 @@
 <script>
-import { h } from 'vue';
+import { h, resolveDirective, withDirectives } from 'vue'
 import 'animate.css';
 
 export default {
@@ -64,14 +64,18 @@ export default {
             return null;
         }
 
-        return h('div', {
-            attrs: {
-                class: 'animate__animated animate__fadeIn',
-            },
-            directives: this.keepAlive
-                ? [{ name: 'show', value: this.active }]
-                : [],
-        }, [this.$slots.default()]);
+        const show = resolveDirective('show');
+        const directives = this.keepAlive
+            ? [[show, this.active]]
+            : [];
+
+        return withDirectives(
+            h(
+                'div',
+                { class: 'animate__animated animate__fadeIn'},
+                [this.$slots.default()]
+            ),
+            directives);
     },
 };
 </script>
