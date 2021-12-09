@@ -48,8 +48,10 @@ export default {
             this.$emit('removed', tab.id);
         },
         select(tab) {
-            this.$emit('selected', tab.id);
-            this.activate(tab);
+            if (!tab.disabled) {
+                this.$emit('selected', tab.id);
+                this.activate(tab);
+            }
         },
         tabIndex(tab) {
             return this.tabs.findIndex(({ _uid }) => _uid === tab._uid);
@@ -61,7 +63,7 @@ export default {
             key: this.key,
             tabs: this.tabs,
             tabEvents: tab => ({
-                click: () => (!tab.disabled ? this.select(tab) : null),
+                click: () => this.select(tab),
             }),
         });
     },

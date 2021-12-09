@@ -68,14 +68,13 @@ export default {
         const directives = this.keepAlive
             ? [[show, this.active]]
             : [];
+        const render = h(
+            'div',
+            { class: 'animate__animated animate__fadeIn'},
+            [this.$slots.default()]
+        );
 
-        return withDirectives(
-            h(
-                'div',
-                { class: 'animate__animated animate__fadeIn'},
-                [this.$slots.default()]
-            ),
-            directives);
+        return withDirectives(render, directives);
     },
 };
 </script>
