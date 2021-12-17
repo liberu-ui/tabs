@@ -1,5 +1,5 @@
 <script>
-import { h, resolveDirective, withDirectives } from 'vue'
+import { h, vShow, withDirectives } from 'vue'
 import 'animate.css';
 
 export default {
@@ -64,9 +64,8 @@ export default {
             return null;
         }
 
-        const show = resolveDirective('show');
         const directives = this.keepAlive
-            ? [[show, this.active]]
+            ? [[vShow, this.active]]
             : [];
         const render = h(
             'div',

@@ -24,7 +24,7 @@ export default {
     methods: {
         activate(activeTab) {
             this.tabs.forEach((tab) => {
-                tab.active = activeTab._uid === tab._uid;
+                tab.active = activeTab._.uid === tab._.uid;
             });
 
             this.$nextTick(() => this.$emit('activated', activeTab.id));
@@ -54,7 +54,7 @@ export default {
             }
         },
         tabIndex(tab) {
-            return this.tabs.findIndex(({ _uid }) => _uid === tab._uid);
+            return this.tabs.findIndex(({ _ }) => _.uid === tab._.uid);
         },
     },
 
