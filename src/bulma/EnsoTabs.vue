@@ -1,6 +1,7 @@
 <template>
     <div class="enso-tabs">
-        <core-tabs ref="tabs">
+        <core-tabs ref="tabs"
+            v-bind="$attrs">
             <template #default="{ key, tabs, tabEvents }">
                 <div class="tabs is-toggle is-fullwidth no-scrollbars"
                     :class="`is-${size}`">

@@ -6,7 +6,8 @@
                 { 'is-fullwidth': fullwidth }
             ]">
             <ul class="tab-list">
-                <core-tabs>
+                <core-tabs
+                    v-bind="$attrs">
                     <template #default="{ key, tabs, tabEvents }">
                         <li :class="{ 'is-active': tab.active }"
                             v-for="tab in tabs"
