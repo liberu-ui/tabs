@@ -1,5 +1,6 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper"
+        :class="$attrs.class">
         <div :class="[
                 'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
                 { 'is-toggle': toggle }, { 'is-toggle-rounded': toggleRounded },
@@ -35,6 +36,8 @@ export default {
     name: 'Tabs',
 
     components: { CoreTabs },
+
+    inheritAttrs: false,
 
     props: {
         alignment: {

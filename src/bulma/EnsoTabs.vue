@@ -1,5 +1,6 @@
 <template>
-    <div class="enso-tabs">
+    <div class="enso-tabs"
+        :class="$attrs.class">
         <core-tabs ref="tabs"
             v-bind="$attrs">
             <template #default="{ key, tabs, tabEvents }">
@@ -33,6 +34,8 @@ export default {
     name: 'EnsoTabs',
 
     components: { CoreTabs },
+
+    inheritAttrs: false,
 
     props: {
         size: {
