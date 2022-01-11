@@ -1,4 +1,7 @@
 <script>
+import { h, vShow, withDirectives } from 'vue'
+import 'animate.css';
+
 export default {
     name: 'Tab',
 
@@ -32,7 +35,7 @@ export default {
         }
     },
 
-    beforeDestroy() {
+    beforeUnmount() {
         this.remove();
     },
 
@@ -56,19 +59,21 @@ export default {
         },
     },
 
-    render(renderEl) {
+    render() {
         if (!this.keepAlive && !this.active) {
             return null;
         }
 
-        return renderEl('div', {
-            attrs: {
-                class: 'animated fadeIn',
-            },
-            directives: this.keepAlive
-                ? [{ name: 'show', value: this.active }]
-                : [],
-        }, [this.$slots.default]);
+        const directives = this.keepAlive
+            ? [[vShow, this.active]]
+            : [];
+        const render = h(
+            'div',
+            { class: 'animate__animated animate__fadeIn'},
+            [this.$slots.default()]
+        );
+
+        return withDirectives(render, directives);
     },
 };
 </script>

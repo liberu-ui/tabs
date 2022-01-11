@@ -1,8 +1,9 @@
 <template>
-    <core-tabs v-on="$listeners"
-        ref="tabs">
-        <template v-slot:default="{ key, tabs, tabEvents }">
-            <div class="enso-tabs">
+    <div class="enso-tabs"
+        :class="$attrs.class">
+        <core-tabs ref="tabs"
+            v-bind="$attrs">
+            <template #default="{ key, tabs, tabEvents }">
                 <div class="tabs is-toggle is-fullwidth no-scrollbars"
                     :class="`is-${size}`">
                     <ul class="tab-list has-background-grey-light">
@@ -10,7 +11,7 @@
                             v-for="tab in tabs"
                             :key="key(tab.id)">
                             <a :class="{ 'has-background-white has-text-grey-dark': tab.active }"
-                                :disabled="tab.disabled"
+                                :disabled="tab.disabled || null"
                                 v-on="tabEvents(tab)">
                                 <slot name="label"
                                     :tab="tab.id">
@@ -21,9 +22,9 @@
                     </ul>
                 </div>
                 <slot/>
-            </div>
-        </template>
-    </core-tabs>
+            </template>
+        </core-tabs>
+    </div>
 </template>
 
 <script>
@@ -34,11 +35,13 @@ export default {
 
     components: { CoreTabs },
 
+    inheritAttrs: false,
+
     props: {
         size: {
             type: String,
             default: 'normal',
-            validator: value => ['normal', 'small', 'medium', 'large']
+            validator: (value) => ['normal', 'small', 'medium', 'large']
                 .includes(value),
         },
     },

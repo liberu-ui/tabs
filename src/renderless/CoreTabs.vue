@@ -2,6 +2,10 @@
 export default {
     name: 'CoreTabs',
 
+    inheritAttrs: false,
+
+    emits: ['activated', 'registered', 'removed', 'selected'],
+
     data: () => ({
         tabs: [],
     }),
@@ -20,7 +24,7 @@ export default {
     methods: {
         activate(activeTab) {
             this.tabs.forEach((tab) => {
-                tab.active = activeTab._uid === tab._uid;
+                tab.active = activeTab._.uid === tab._.uid;
             });
 
             this.$nextTick(() => this.$emit('activated', activeTab.id));
@@ -44,20 +48,22 @@ export default {
             this.$emit('removed', tab.id);
         },
         select(tab) {
-            this.$emit('selected', tab.id);
-            this.activate(tab);
+            if (!tab.disabled) {
+                this.$emit('selected', tab.id);
+                this.activate(tab);
+            }
         },
         tabIndex(tab) {
-            return this.tabs.findIndex(({ _uid }) => _uid === tab._uid);
+            return this.tabs.findIndex(({ _ }) => _.uid === tab._.uid);
         },
     },
 
     render() {
-        return this.$scopedSlots.default({
+        return this.$slots.default({
             key: this.key,
             tabs: this.tabs,
             tabEvents: tab => ({
-                click: () => (!tab.disabled ? this.select(tab) : null),
+                click: () => this.select(tab),
             }),
         });
     },

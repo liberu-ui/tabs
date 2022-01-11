@@ -1,17 +1,19 @@
 <template>
-    <core-tabs v-on="$listeners">
-        <template v-slot:default="{ key, tabs, tabEvents }">
-            <div class="wrapper">
-                <div :class="[
-                        'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
-                        { 'is-toggle': toggle }, { 'is-toggle-rounded': toggleRounded },
-                        { 'is-fullwidth': fullwidth }
-                    ]">
-                    <ul class="tab-list">
+    <div class="wrapper"
+        :class="$attrs.class">
+        <div :class="[
+                'tabs', 'is-' + alignment, 'is-' + size, { 'is-boxed': boxed },
+                { 'is-toggle': toggle }, { 'is-toggle-rounded': toggleRounded },
+                { 'is-fullwidth': fullwidth }
+            ]">
+            <ul class="tab-list">
+                <core-tabs
+                    v-bind="$attrs">
+                    <template #default="{ key, tabs, tabEvents }">
                         <li :class="{ 'is-active': tab.active }"
                             v-for="tab in tabs"
                             :key="key(tab.id)">
-                            <a :disabled="tab.disabled"
+                            <a :disabled="tab.disabled || null"
                                 v-on="tabEvents(tab)">
                                 <slot name="label"
                                     :tab="tab.id">
@@ -19,12 +21,12 @@
                                 </slot>
                             </a>
                         </li>
-                    </ul>
-                </div>
-                <slot/>
-            </div>
-        </template>
-    </core-tabs>
+                    </template>
+                </core-tabs>
+            </ul>
+        </div>
+        <slot/>
+    </div>
 </template>
 
 <script>
@@ -35,11 +37,13 @@ export default {
 
     components: { CoreTabs },
 
+    inheritAttrs: false,
+
     props: {
         alignment: {
             type: String,
             default: 'left',
-            validator: value => ['left', 'centered', 'right']
+            validator: (value) => ['left', 'centered', 'right']
                 .includes(value),
         },
         boxed: {
@@ -53,7 +57,7 @@ export default {
         size: {
             type: String,
             default: 'normal',
-            validator: value => ['normal', 'small', 'medium', 'large']
+            validator: (value) => ['normal', 'small', 'medium', 'large']
                 .includes(value),
         },
         toggle: {
