@@ -23,9 +23,8 @@ export default {
 
     methods: {
         activate(activeTab) {
-            this.tabs.forEach((tab) => {
-                tab.active = activeTab._.uid === tab._.uid;
-            });
+            this.tabs
+                .forEach(tab => (tab.active = activeTab._.uid === tab._.uid));
 
             this.$nextTick(() => this.$emit('activated', activeTab.id));
         },
