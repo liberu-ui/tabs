@@ -1,10 +1,10 @@
 # Tabs
 
-![npm license](https://img.shields.io/npm/l/@enso-ui/tabs.svg) 
-![npm download](https://img.shields.io/npm/dm/@enso-ui/tabs.svg) 
-![GitHub top language](https://img.shields.io/github/languages/top/enso-ui/tabs.svg) 
-![GitHub issues](https://img.shields.io/github/issues/enso-ui/tabs.svg) 
-![npm version](https://img.shields.io/npm/v/@enso-ui/tabs.svg) 
+![npm license](https://img.shields.io/npm/l/@liberu-ui/tabs.svg) 
+![npm download](https://img.shields.io/npm/dm/@liberu-ui/tabs.svg) 
+![GitHub top language](https://img.shields.io/github/languages/top/liberu-ui/tabs.svg) 
+![GitHub issues](https://img.shields.io/github/issues/liberu-ui/tabs.svg) 
+![npm version](https://img.shields.io/npm/v/@liberu-ui/tabs.svg) 
 
 Simply Tabs
 
