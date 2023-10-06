@@ -1,6 +1,6 @@
 {
   "name": "@liberu-ui/tabs",
-  "version": "2.0.16",
+  "version": "2.0.17",
   "description": "Simply Tabs",
   "main": "index.js",
   "scripts": {
